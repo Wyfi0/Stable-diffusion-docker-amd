@@ -10,7 +10,7 @@ RUN mkdir LLM
 WORKDIR /home/LLM
 
 RUN apt-get update
-RUN apt-get install -y wget git python bash
+RUN apt-get install -y wget git python bash fd-find
 
 # Idk but this is needed
 RUN pip3 install networkx==3.1
@@ -19,9 +19,10 @@ RUN pip3 install torch torchvision torchaudio --index-url https://download.pytor
 
 WORKDIR /home/LLM
 
-RUN git clone https://github.com/comfyanonymous/ComfyUI.git && cd ComfyUI \
-    && pip3 install -r requirements.txt 
+ENTRYPOINT cd ComfyUI \
+    && pip3 install -r requirements.txt \
+    && HSA_OVERRIDE_GFX_VERSION=10.3.0 python3 main.py --listen
 
-WORKDIR /home/LLM
+# WORKDIR /home/LLM/ComfyUI
 
-ENTRYPOINT cd / && find / ComfyUI && ls && pwd && python3 main.py --listen 
+# ENTRYPOINT pwd && python3 main.py --listen 
