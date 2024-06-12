@@ -1,5 +1,5 @@
 # Stable diffusion docker container
-These are my Dockerfile and docker-compose.yaml for my AMD graphics card (6700xt)
+## These are my Dockerfile and docker-compose.yaml for my AMD graphics card (6700xt)
 
 ------------------
 
