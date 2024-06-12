@@ -1,0 +1,19 @@
+services:
+  custom-stable:
+    build:
+      dockerfile: Dockerfile
+    volumes:
+      - ./models:/home/LLM:rw
+    devices:
+      - /dev/kfd
+      - /dev/dri
+    security_opt:
+      - seccomp:unconfined
+    ports:
+      - 8188:8188
+    command: bash
+    tty: true
+    #group_add:
+    #  - 985
+volumes:
+  models:

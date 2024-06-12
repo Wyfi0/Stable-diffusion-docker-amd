@@ -1,0 +1,11 @@
+services:
+  my-service:
+    image: rocm/rocm-terminal
+    devices:
+      - /dev/kfd
+      - /dev/dri
+    security_opt:
+      - seccomp:unconfined
+      #group:
+      #- 985
+    
